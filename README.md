@@ -22,7 +22,9 @@ Creating an Eclipse project
 ---------------------------
 Type: ./gradlew cleanEclipse eclipse
 
-Make sure you have a recent version of the Groovy Eclipse plugin installed. After importing the generated project into a workspace, go to Preferences->Java->Build Path->Classpath Variables and add a variable named GRADLE_CACHE with value "<user_home>/.gradle/cache". (If you have an environment variable GRADLE_USER_HOME set, the correct value is "<GRADLE_USER_HOME>/cache".) You should now be able to build the project, and to run the specs like you would run a JUnit test. See http://wiki.spockframework.org/GettingStarted#Eclipse for more information on how to get started with Spock and Eclipse.
+Make sure you have a recent version of the Groovy Eclipse plugin installed.
+After importing the generated project into a workspace, go to Preferences->Java->Build Path->Classpath Variables and add a variable named GRADLE_CACHE with value "<user_home>/.gradle/cache". (If you have an environment variable GRADLE_USER_HOME set, the correct value is "<GRADLE_USER_HOME>/cache".)
+You should now be able to build the project, and to run the specs like you would run a JUnit test.
 
 Creating an IDEA project
 ---------------------------
