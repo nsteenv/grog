@@ -1,0 +1,19 @@
+apply plugin: 'groovy'
+apply plugin: "idea"
+apply plugin: "eclipse"
+
+repositories {
+    mavenCentral()
+    // required because a snapshot version of Spock is used
+    mavenRepo urls: "http://m2repo.spockframework.org/snapshots"
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.2.2'
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.0-SNAPSHOT"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+    jarPath = "wrapper"
+}

@@ -1,0 +1,5 @@
+package grog
+
+class Grog {
+
+}
