@@ -1,11 +1,12 @@
 apply plugin: 'groovy'
 apply plugin: "idea"
 apply plugin: "eclipse"
+apply plugin: 'application'
+
+mainClassName = "grog.Grog"
 
 repositories {
     mavenCentral()
-    // required because a snapshot version of Spock is used
-    mavenRepo urls: "http://m2repo.spockframework.org/snapshots"
 }
 
 dependencies {
@@ -15,5 +16,4 @@ dependencies {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.11'
-    jarPath = "wrapper"
 }
