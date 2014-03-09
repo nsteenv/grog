@@ -7,6 +7,10 @@ mainClassName = "grog.Grog"
 
 repositories {
     mavenCentral()
+    // maven repo for spock snapshot
+    maven {
+        url "http://oss.sonatype.org/content/repositories/snapshots"
+    }
 }
 
 dependencies {
