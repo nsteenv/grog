@@ -24,7 +24,7 @@ dependencies {
 }
 
 task grogClean(dependsOn: clean, type: Delete) {
-    description = "Clean generated content"
+    description = "Clean all generated static webpages"
     delete "$project.buildDir/grog"
 }
 
@@ -42,9 +42,24 @@ task grogCopyAssets(dependsOn: grogClean, type: Copy) {
 }
 
 task grogGenerate(dependsOn: grogCopyAssets, type: GradleBuild) {
-    description = "Generates static webpages"
+    description = "Generate static webpages"
     buildFile = "asciidoc.gradle"
     tasks = ["generateTemplates"]
+}
+
+task grogPreview(type: GradleBuild) {
+    description = "Preview generated pages with jetty"
+    buildFile = "jetty.gradle"
+    tasks = ["startServer"]
+}
+
+idea {
+    module {
+        excludeDirs = [file(".gradle")]
+        ["classes", "docs", "dependency-cache", "libs", "reports", "resources", "test-results", "tmp"].each {
+            excludeDirs << file("$buildDir/$it")
+        }
+    }
 }
 
 

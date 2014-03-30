@@ -1,0 +1,11 @@
+Embedded document
+=================
+Author's Name <authors@email.address>
+v1.0, 2004-04
+:type: index
+
+This illustrates how you can embed more than one document in a template.
+You can do all sort of manipulations on the whole document list object (count,sort,filter,etc..).
+Then display resulting data the way you want.
+
+You can have a look at /src/grog/templates/index.html (l.49) to see how to do that.

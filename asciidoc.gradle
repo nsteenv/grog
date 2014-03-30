@@ -1,11 +1,12 @@
 import groovy.io.FileType
 import groovy.text.GStringTemplateEngine
+import groovy.util.logging.Log4j
 import org.asciidoctor.Asciidoctor
 import org.asciidoctor.DocumentHeader
 
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath "org.asciidoctor:asciidoctor-java-integration:0.1.4"
@@ -13,8 +14,8 @@ buildscript {
 }
 
 task generateTemplates(type: GrogTask) {
-    sourceDir new File("$project.projectDir/src/grog")
-    outputDir new File("$project.buildDir/grog")
+    sourceDir file("$project.projectDir/src/grog")
+    outputDir file("$project.buildDir/grog")
 }
 
 class GrogDocument {
@@ -36,6 +37,7 @@ class GrogDocument {
     }
 }
 
+@Log4j
 class GrogTask extends DefaultTask {
 
     @InputDirectory
@@ -76,14 +78,25 @@ class GrogTask extends DefaultTask {
 
         contentData.each { GrogDocument document ->
 
-            File outputFileDir = new File(outputDir, document.path)
-            outputFileDir.mkdirs()
+            if (document.templateName != null) {
 
-            new GStringTemplateEngine()
-                    .createTemplate(new File(templateDir, "${document.templateName}.html"))
-                    .make([doc: document, data: contentData])
-                    .writeTo(new FileWriter(new File(outputFileDir, "${document.name}.html")))
-                    .flush()
+                File outputFileDir = new File(outputDir, document.path)
+                outputFileDir.mkdirs()
+
+                File templateFile = new File(templateDir, "${document.templateName}.html")
+
+                if (templateFile.exists()) {
+                    new GStringTemplateEngine()
+                            .createTemplate(templateFile)
+                            .make([doc: document, data: contentData])
+                            .writeTo(new FileWriter(new File(outputFileDir, "${document.name}.html")))
+                            .flush()
+                } else {
+                    log.error("GrogTask: Missing template file ${templateFile.canonicalPath}")
+                }
+            } else {
+                log.error("GrogTask: Missing template name in ${document.path}${document.name}.ad (remember to add :type: tag)")
+            }
         }
     }
 }

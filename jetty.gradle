@@ -1,0 +1,45 @@
+import org.mortbay.jetty.Server
+import org.mortbay.jetty.servlet.Context
+import org.mortbay.jetty.servlet.DefaultServlet
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.mortbay.jetty:jetty-embedded:6.1.26'
+    }
+}
+
+task startServer(type: JettyTask) {
+    port 9000
+    contextPath = '/blog'
+    baseDir = './build/grog/'
+}
+
+class JettyTask extends DefaultTask {
+
+    @Input
+    Integer port = 8080
+
+    @Input
+    String contextPath = "/"
+
+    @Input
+    String baseDir = "."
+
+    @TaskAction
+    void run() {
+        new Server(port).with {
+            new Context(it, contextPath, Context.SESSIONS).with {
+                resourceBase = baseDir
+                addServlet(DefaultServlet, '/*').with {
+                    setInitParameter 'dirAllowed', 'true'
+                }
+            }
+            start()
+            join()
+        }
+    }
+}
