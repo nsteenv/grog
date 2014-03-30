@@ -1,0 +1,332 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+
+.text-container h1, .text-container h2, .text-container h3, .text-container h4, .text-container h5, div.book h1, div.book h2, div.book h3, div.book h4, div.book h5, div.chapter h1, div.chapter h2, div.chapter h3, div.chapter h4, div.chapter h5 {
+  margin-left: 0;
+}
+
+body {
+  background-image: none;
+}
+
+.site-decorated {
+  min-height: 40px;
+  background: #ecf4e2 none;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #999;
+  font-family: 'Lato', sans-serif !important;  
+}
+
+.site-decorated a, .gradle img, .navbar-inner .navbar-version {
+  font-family: 'Lato', sans-serif !important;  
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  margin-bottom: 0;
+}
+
+.navbar-fixed-top {
+  top: 0;
+}
+
+.navbar-inner {
+  line-height: 10px;
+  margin: 5px 10px;
+}
+
+.navbar-inner ul {
+  position: relative;
+  left: 0;
+  display: block;
+  float: left;
+  padding: 0;
+  margin:0;
+  list-style: none;
+}
+
+.site-decorated .gradle {
+  padding-right: 0;
+  padding-left: 0;
+  float: left;
+}
+
+.gradle img, .navbar-inner .navbar-version {
+  margin-top: 2px;
+}
+
+.site-decorated .gradleware {
+  padding-right: 0;
+  padding-left: 0;
+  float: right;
+  font-size: 11px;
+  line-height: 11px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-top: -1px;
+  height: 30px !important;
+}
+
+.site-decorated .gradleware a p  {
+  margin: 2px 0 0 0;
+  padding: 0px;
+  line-height: 11px;
+  color: #84b819;
+}
+
+.navbar-inner .navbar-version {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 8px;
+  margin-right: 12px;
+  color: #1F3A1F;
+  line-height: 27px;
+  text-shadow: #B3B3B3 0px 0px 2px;
+}
+
+.navbar-inner ul li, .navbar-inner .navbar-version, .navbar-inner .navbar-separator {
+  float: left;
+}
+
+.navbar-inner ul li a, .navbar-inner .navbar-version, .navbar-inner .navbar-separator {
+  text-decoration: none;
+}
+
+.navbar-inner ul li {
+  padding: 6px 4px;
+}
+
+.navbar-inner ul li a {
+  line-height: 18px;
+  padding: 4px 8px !important;
+  float: none;
+  color: #0C5E32;
+  font-size: 13px !important;
+  border-radius: 6px;
+  border: 1px solid #ecf4e2;
+}
+
+.navbar-inner ul li a:hover {
+  box-shadow: 0 0 2px #4C4C4C;
+  border: 1px solid #FFF;
+}
+
+.navbar-inner ul li a.current-nav {
+  color: #ecf4e2;
+  border: 1px solid #0C5E32;
+  background-color: #0C5E32;
+  box-shadow: 0 0 2px #4C4C4C;
+}
+.nav-collapse.collapse {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.site-decorated a:hover, .site-decorated a {
+  text-decoration: none !important;
+  border-bottom: none;
+}
+
+#fixed-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+#content-container {
+  width: 980px;
+  float: left;
+  padding-left: 10px;
+}
+
+div.navfooter {
+  clear: both;
+}
+
+div.sidebar {
+  position: relative;
+  float: left;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.sidebar li.sidebarHeading {
+  margin-top: 0;
+}
+
+#gradleware-box {
+  width: 250px;
+  float: right;
+  margin-left: 1em;
+  padding: 6px;
+  border-radius: 12px;
+  color: #a2a2a2 !important;
+  line-height: 22px;
+  font-size: 12pt;
+  margin-bottom: 2em;
+}
+
+#gradleware-box a {
+  color: #a2a2a2 !important;  
+}
+
+#gradleware-box h3 {
+  text-shadow: none;
+  font-size: 20px;
+  margin-top: 15px !important;
+  text-align: left;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#gradleware-box .more {
+  text-align: right;
+  margin-bottom: 0;
+  margin-top: 0em;
+}
+
+#gradleware-box ul {
+  margin: 0;
+}
+#gradleware-box li {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+#gradleware-box li:before {
+  content: '\00BB';
+  margin-left: -1em;
+  margin-right: 0.2em;
+}
+
+#gradleware-box .inner {
+  padding: 3px;
+  border-radius: 12px;  
+  margin-bottom: 6px;
+}
+
+#gradleware-box .inner:last-child {
+  margin-bottom: 0;
+}
+
+#gradleware-box .oreilly-book {
+  text-align: center;
+}
+
+#gradle-summit-ad img {
+  margin: 0;
+}
+
+#gradle-summit-ad a:hover {
+  text-decoration: none;
+  border: none;
+}
+
+.dsl .table table {
+  width: 100%;
+}
+
+.dsl .table table thead td:first-child {
+  width: 25%;
+  white-space: nowrap;
+}
+
+.dsl .table table p {
+  margin-bottom: 0;
+}
+
+/*.release-notes *[id]:before, a[name]:before {
+    display:block; 
+    content:""; 
+    height: 38px; 
+    margin: -38px 0 0; 
+}
+*/
+.example, .figure, .table, .note {
+  overflow: auto;
+}
+
+.segmentedlist table, .table table {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.text-container p, .chapter p {
+  margin-left: 4px;
+}
+
+h4.signature {
+  margin-right: 0;
+}
+
+#doc-search {
+  float: right;
+  width: 200px;
+}
+
+.doc-search table {
+  border: none;
+  margin: 0;
+}
+
+.doc-search td {
+  border: none;
+  margin: 0;
+  padding: 4px;
+}
+
+#doc-search .gsc-input {
+  font-size: 12px;
+  font-family: 'Lato', sans-serif !important;  
+}
+
+td.gsc-search-button {
+  display: none;
+}
+
+div.gsc-input-box {
+  height: 20px;
+}
+
+h2[id], h3[id], h4[id], h5[id], a[name] {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+
+a[name] {
+  display: block;
+  text-decoration: none;
+  border: none;
+}
+
+a.footnote, sup a.para {
+  display: inline;
+}
+
+h3.incubating {
+  display: block;
+}
+
+a.incubating-marker {
+    display: inline;
+    color: white;
+    font-style: italic;
+    font-size: 0.6em;
+    text-shadow: none;
+    margin-left: 0.6em;
+    border-radius: 6px;
+    background-color: rgb(160, 160, 160);
+    border: 1px solid rgb(150, 150, 150);
+    padding: 1px 5px;
+    box-shadow: none;
+    cursor: pointer;
+    vertical-align: 1px;
+}
+
+a.incubating-marker:hover {
+    text-decoration: none;
+    border: 1px solid rgb(150, 150, 150);
+}

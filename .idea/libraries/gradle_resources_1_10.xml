@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gradle-resources-1.10">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gvm/gradle/1.10/lib/gradle-resources-1.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

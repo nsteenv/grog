@@ -1,5 +1,0 @@
-package grog
-
-class GrogTest {
-
-}
