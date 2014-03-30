@@ -1,23 +1,50 @@
-apply plugin: 'groovy'
+apply plugin: "groovy"
 apply plugin: "idea"
 apply plugin: "eclipse"
-apply plugin: 'application'
+apply plugin: "jetty"
 
-mainClassName = "grog.Grog"
+group = "fr.vansteen.grog"
+version = "0.1.0-SNAPSHOT"
+
+description = "Generate static website from asciidoc files and groovy templates"
 
 repositories {
-    mavenCentral()
-    // maven repo for spock snapshot
+    jcenter()
     maven {
+        // maven repo for spock snapshot
         url "http://oss.sonatype.org/content/repositories/snapshots"
     }
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.2.2'
+    compile gradleApi()
+    compile localGroovy()
+    compile "org.asciidoctor:asciidoctor-java-integration:0.1.4"
     testCompile "org.spockframework:spock-core:1.0-groovy-2.0-SNAPSHOT"
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+task grogClean(dependsOn: clean, type: Delete) {
+    description = "Clean generated content"
+    delete "$project.buildDir/grog"
 }
+
+task grogPublish(type: GradleBuild) {
+    description = "Publish static webpages on Github"
+    buildFile = "publish.gradle"
+    tasks = ["publishGhPages"]
+}
+
+task grogCopyAssets(dependsOn: grogClean, type: Copy) {
+    description = "Copy assets to build directory"
+    from "${project.projectDir}/src/grog/assets"
+    into "${project.buildDir}/grog"
+    includeEmptyDirs = false
+}
+
+task grogGenerate(dependsOn: grogCopyAssets, type: GradleBuild) {
+    description = "Generates static webpages"
+    buildFile = "asciidoc.gradle"
+    tasks = ["generateTemplates"]
+}
+
+

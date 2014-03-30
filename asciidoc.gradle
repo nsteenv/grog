@@ -1,0 +1,89 @@
+import groovy.io.FileType
+import groovy.text.GStringTemplateEngine
+import org.asciidoctor.Asciidoctor
+import org.asciidoctor.DocumentHeader
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.asciidoctor:asciidoctor-java-integration:0.1.4"
+    }
+}
+
+task generateTemplates(type: GrogTask) {
+    sourceDir new File("$project.projectDir/src/grog")
+    outputDir new File("$project.buildDir/grog")
+}
+
+class GrogDocument {
+    String name
+    String path
+    DocumentHeader header
+    String body
+    GrogDocument[] data
+
+    GrogDocument(String name, String path, DocumentHeader header, String body) {
+        this.name = name
+        this.path = path
+        this.header = header
+        this.body = body
+    }
+
+    String getTemplateName() {
+        return header?.attributes?.type
+    }
+}
+
+class GrogTask extends DefaultTask {
+
+    @InputDirectory
+    File sourceDir
+
+    @OutputDirectory
+    File outputDir
+
+    @TaskAction
+    void generate() {
+
+        def contentData = []
+
+        File contentDir = new File(sourceDir, "/content")
+
+        contentDir.eachFileRecurse(FileType.FILES) { file ->
+
+            String filePath = file.absolutePath - ~/${contentDir}/ - ~/${file.name}/
+            String fileName = file.name - ~/\.[^\.]+$/
+
+            File outputFileDir = new File(outputDir, filePath)
+            outputFileDir.mkdirs()
+
+            def doctor = Asciidoctor.Factory.create()
+            DocumentHeader header = doctor.readDocumentHeader(file)
+
+            GrogDocument document = new GrogDocument(
+                    fileName,
+                    filePath,
+                    header,
+                    doctor.renderFile(file, [attributes: [backend: "html5"]])
+            )
+
+            contentData << document
+        }
+
+        File templateDir = new File(sourceDir, "/templates")
+
+        contentData.each { GrogDocument document ->
+
+            File outputFileDir = new File(outputDir, document.path)
+            outputFileDir.mkdirs()
+
+            new GStringTemplateEngine()
+                    .createTemplate(new File(templateDir, "${document.templateName}.html"))
+                    .make([doc: document, data: contentData])
+                    .writeTo(new FileWriter(new File(outputFileDir, "${document.name}.html")))
+                    .flush()
+        }
+    }
+}
