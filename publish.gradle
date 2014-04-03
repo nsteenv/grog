@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'github-pages'
 
 githubPages {
-    repoUri = 'git@github.com:v-vansteen/v-vansteen.github.io.git'
+    repoUri = 'git@github.com:myusername/myusername.github.io.git'
     pages {
         from(file('build/grog')) {
             into '.'
