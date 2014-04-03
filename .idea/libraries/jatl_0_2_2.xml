@@ -2,6 +2,7 @@
   <library name="jatl-0.2.2">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gvm/gradle/1.11/lib/plugins/jatl-0.2.2.jar!/" />
+      <root url="jar://$USER_HOME$/.gvm/gradle/1.10/lib/plugins/jatl-0.2.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
