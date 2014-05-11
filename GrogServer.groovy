@@ -5,7 +5,7 @@ import org.mortbay.jetty.servlet.DefaultServlet
 
 new Server(8080).with {
     new Context(it, '/', Context.SESSIONS).with {
-        resourceBase = './build/grog/'
+        resourceBase = './grog/build/'
         addServlet(DefaultServlet, '/*').with {
             setInitParameter 'dirAllowed', 'true'
         }

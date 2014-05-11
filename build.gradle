@@ -1,7 +1,6 @@
 apply plugin: "groovy"
 apply plugin: "idea"
 apply plugin: "eclipse"
-apply plugin: "jetty"
 
 group = "fr.vansteen.grog"
 version = "0.1.0-SNAPSHOT"

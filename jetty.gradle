@@ -14,7 +14,7 @@ buildscript {
 
 task startServer(type: JettyTask) {
     port 9000
-    contextPath = '/blog'
+    contextPath = '/'
     baseDir = './build/grog/'
 }
 
@@ -31,6 +31,7 @@ class JettyTask extends DefaultTask {
 
     @TaskAction
     void run() {
+        println "Jetty server listening on http://localhost:$port$contextPath"
         new Server(port).with {
             new Context(it, contextPath, Context.SESSIONS).with {
                 resourceBase = baseDir
